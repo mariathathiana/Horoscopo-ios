@@ -66,7 +66,13 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="LK5-xO-Vzq" secondAttribute="trailing" id="bZV-Bj-rci"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Zodiac" id="vPR-WQ-cFg"/>
+                    <navigationItem key="navigationItem" title="Zodiac" id="vPR-WQ-cFg">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gearshape" catalog="system" id="5vd-7x-tRo">
+                            <connections>
+                                <segue destination="cwZ-7m-HBJ" kind="show" identifier="NavigateToSettings" id="PUT-qB-1ZA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="LK5-xO-Vzq" id="ZPl-hV-DQv"/>
                     </connections>
@@ -107,7 +113,7 @@
             </objects>
             <point key="canvasLocation" x="1198" y="508"/>
         </scene>
-        <!--View Controller-->
+        <!--NavigateToSettings-->
         <scene sceneID="2Pw-Km-J3c">
             <objects>
                 <viewController id="cwZ-7m-HBJ" sceneMemberID="viewController">
@@ -117,13 +123,15 @@
                         <viewLayoutGuide key="safeArea" id="703-jC-gOL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="NavigateToSettings" id="mEx-wp-EGz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhf-Xt-GPw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1923" y="516"/>
+            <point key="canvasLocation" x="476" y="-177"/>
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
