@@ -39,12 +39,10 @@ class MainViewController: UIViewController, UITableViewDataSource {
             let horoscope = horoscopeList[indexPath.row]
             detailVC.horoscope = horoscope
             tableView.deselectRow(at: indexPath, animated: true)
-        } else if segue.identifier == "NavigateToSettings" {
-            
         }
+        
+        
+        
     }
-    
-    
-    
 }
 
