@@ -116,6 +116,9 @@
                                             <segment title="Weekly"/>
                                             <segment title="Monthly"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="didChangePeriod:" destination="jGa-Wd-Iqf" eventType="valueChanged" id="XCe-yu-NB4"/>
+                                        </connections>
                                     </segmentedControl>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QUJ-5Y-Csm">
                                         <rect key="frame" x="8" y="219" width="369" height="371"/>

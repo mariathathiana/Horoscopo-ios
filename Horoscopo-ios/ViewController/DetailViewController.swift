@@ -14,43 +14,49 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var signImageView: UIImageView!
     @IBOutlet weak var predictionTextview: UITextView!
    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         navigationItem.title = horoscope.name
-       
-        
-        if #available(iOS 26.0, *){
-            navigationItem.subtitle = horoscope.dates
-        }else{
-            
-        }
+        navigationItem.subtitle = horoscope.dates
         
         signImageView.image = horoscope.getSignIcon()
+        
         getPrediction(period: "daily")
     }
     
+    @IBAction func didChangePeriod(_ sender: UISegmentedControl) {switch sender.selectedSegmentIndex {
+    case 0: getPrediction(period: "daily")
+    case 1: getPrediction(period: "weekly")
+    default: getPrediction(period: "monthly")
     
-    func getPrediction(period: String){
+    }
+    }
+    
+
+    
+    func getPrediction(period: String) {
         let url = URL(string: "https://horoscope-app-api.vercel.app/api/v1/get-horoscope/\(period)?sign=\(horoscope.id)")
-        Task{
-            do{
-                let (data, response) = try await URLSession.shared.data(from:url!)
-                if let str = String(data: data, encoding: .utf8){
-                    print("Succesfully decocoded: \(str)")
-                }
+        
+        Task {
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url!)
                 
-            }catch{
+                let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+                
+                let jsonData = jsonObject["data"] as! [String: String]
+                
+                let result = jsonData["horoscope_data"]!
+                
+                DispatchQueue.main.async {
+                    self.predictionTextview.text = result
+                }
+            } catch {
                 print(error)
             }
         }
     }
-
     /*
     // MARK: - Navigation
 
