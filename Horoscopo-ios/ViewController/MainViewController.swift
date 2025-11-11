@@ -30,6 +30,20 @@ class MainViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
+    /*override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }*/
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return horoscopeList.count
+    }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
