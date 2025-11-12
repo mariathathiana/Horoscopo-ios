@@ -54,7 +54,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="datesLabel" destination="3CB-dI-wZZ" id="stD-9F-Fvx"/>
-                                            <outlet property="favorite" destination="9QC-iH-4Ih" id="4Gk-lu-Mvh"/>
+                                            <outlet property="favoriteImageView" destination="9QC-iH-4Ih" id="hxO-7u-UNd"/>
                                             <outlet property="nameLabel" destination="JI4-9C-QOJ" id="FcX-gN-02D"/>
                                             <outlet property="signImageView" destination="kgl-3d-i0u" id="tt1-dx-daJ"/>
                                             <segue destination="jGa-Wd-Iqf" kind="show" identifier="NavigateToDetail" id="X6T-WL-kMj"/>
@@ -149,12 +149,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="qDq-hf-wGP">
-                        <barButtonItem key="rightBarButtonItem" title="Favorite" image="heart" catalog="system" id="bQE-cP-ldG">
-                            <color key="tintColor" systemColor="systemRedColor"/>
-                            <connections>
-                                <action selector="setFavorite:" destination="jGa-Wd-Iqf" id="KB9-0H-99W"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Favorite" image="heart" catalog="system" id="bQE-cP-ldG">
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <connections>
+                                    <action selector="setFavorite:" destination="jGa-Wd-Iqf" id="KB9-0H-99W"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="square.and.arrow.up" catalog="system" id="9jo-U8-FAu">
+                                <connections>
+                                    <action selector="sharePrediction:" destination="jGa-Wd-Iqf" id="SjP-FR-Gva"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteMenuItem" destination="bQE-cP-ldG" id="ajy-if-NNU"/>
@@ -171,6 +178,7 @@
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
+        <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
