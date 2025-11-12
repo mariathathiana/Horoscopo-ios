@@ -7,9 +7,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource {
+class MainViewController: UIViewController, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+ 
+        var filteredHoroscopeList: [Horoscope] = []
+        var isSearching = false
+    
     
     let horoscopeList :[Horoscope] = Horoscope.getAll()
     
@@ -17,6 +24,9 @@ class MainViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.dataSource = self
+        searchBar.delegate = self
+        tableView.keyboardDismissMode = .onDrag
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,5 +60,19 @@ class MainViewController: UIViewController, UITableViewDataSource {
         
         
     }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            if searchText.isEmpty {
+                isSearching = false
+                tableView.reloadData()
+            } else {
+                isSearching = true
+                filteredHoroscopeList = horoscopeList.filter {
+                    $0.name.lowercased().contains(searchText.lowercased())
+                }
+                tableView.reloadData()
+            }
+        }
 }
 
